@@ -1,0 +1,7 @@
+set bg=dark
+colorscheme gruvbox
+set lines=32 columns=120
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guifont=Monospace
