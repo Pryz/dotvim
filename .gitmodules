@@ -1,0 +1,39 @@
+[submodule "dotvim/bundle/puppet"]
+	path = dotvim/bundle/puppet
+	url = https://github.com/rodjek/vim-puppet.git
+[submodule "dotvim/bundle/syntastic"]
+	path = dotvim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule "dotvim/bundle/tabular"]
+	path = dotvim/bundle/tabular
+	url = https://github.com/godlygeek/tabular.git
+[submodule "dotvim/bundle/ultisnips"]
+	path = dotvim/bundle/ultisnips
+	url = https://github.com/SirVer/ultisnips.git
+[submodule "dotvim/bundle/endwise"]
+	path = dotvim/bundle/endwise
+	url = https://github.com/tpope/vim-endwise.git
+[submodule "dotvim/bundle/airline"]
+	path = dotvim/bundle/airline
+	url = https://github.com/bling/vim-airline
+[submodule "dotvim/bundle/nerdtree"]
+	path = dotvim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "dotvim/bundle/fugitive"]
+	path = dotvim/bundle/fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "dotvim/bundle/asciidoc"]
+	path = dotvim/bundle/asciidoc
+	url = https://github.com/sukima/asciidoc-vim.git
+[submodule "dotvim/bundle/json"]
+	path = dotvim/bundle/json
+	url = https://github.com/elzr/vim-json.git
+[submodule "dotvim/bundle/rooter"]
+	path = dotvim/bundle/rooter
+	url = https://github.com/airblade/vim-rooter.git
+[submodule "dotvim/bundle/ruby"]
+	path = dotvim/bundle/ruby
+	url = https://github.com/vim-ruby/vim-ruby.git
+[submodule "dotvim/bundle/surround"]
+	path = dotvim/bundle/surround
+	url = https://github.com/tpope/vim-surround.git
