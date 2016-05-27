@@ -1,72 +1,142 @@
-" Pathogen autoload for bundle
-call pathogen#infect()
+set nocompatible              " be iMproved, required
+filetype off                  " required
+let mapleader = '\'
+
+" Snippets variables
+let g:snips_author='Julien Fabre'
+let g:author='Julien Fabre'
+let g:snips_email='julien.fabre@tubemogul.com'
+let g:email='julien.fabre@tubemogul.com'
+let g:snips_github='https://github.com/Pryz'
+let g:github='https://github.com/Pryz'
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+" to install plugin run : vim +PluginInstall +qall
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'L9'
+Plugin 'wincent/command-t'
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-endwise'
+Plugin 'elzr/vim-json'
+Plugin 'scrooloose/nerdtree'
+Plugin 'rodjek/vim-puppet'
+Plugin 'airblade/vim-rooter'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/syntastic'
+Plugin 'godlygeek/tabular'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'tpope/vim-markdown'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'fatih/vim-go'
+Plugin 'vim-scripts/gnupg.vim'
+Plugin 'markcornick/vim-terraform'
+Plugin 'smerrill/vcl-vim-plugin'
+" Plugin 'Valloric/YouCompleteMe'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
 syntax on
-filetype plugin indent on
+" Syntastic
+let g:syntastic_puppet_lint_arguments='--no-class_inherits_from_params_class-check --no-80chars-check'
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+""let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+"" Ultisnip
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 " no backup files
 set backupcopy=no
 set nobackup
+set noswapfile
 
 " indentation
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set smarttab
 set smartindent
-" expandtab
 set expandtab
 set et
+set textwidth=200
 
-set textwidth=80
-
-" highlight search
+" Highlight search
 set hlsearch
+set incsearch
 
-" highlight search
-set hlsearch
-
-" Powerline
+" Powerline - vim-airline
 let g:airline#extensions#tabline#enabled = 1
-" airline status line
-"let g:airline_theme='light'
+let g:airline_theme='powerlineish'
 if has('gui_running')
     let g:airline_powerline_fonts=1
     endif
     set laststatus=2
     set ttimeoutlen=50
 
-"" Asciidoc
-"" " setl ft will override any previous setfiletype
-autocmd BufNewFile,BufRead *.txt setl ft=asciidoc
-command Ad setfiletype asciidoc
-
-"" " Ruby
-"autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-"autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-"autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-"autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-"
-"" " Python
-"autocmd FileType python set omnifunc=pythoncomplete#Complete
-"autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-"autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-"
 " Puppet
 autocmd BufNewFile,BufRead *.pp setl ft=puppet
 let g:syntastic_mode_map={ 'mode': 'active',
                      \ 'active_filetypes': [],
                      \ 'passive_filetypes': ['puppet'] }
 
-" Shortcuts
-
-"" NERDTree
+" NERDTree
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeWinSize = 20
 function! ToggleTree()
     execute 'NERDTreeToggle'
     execute 'vertical resize 20'
 endfunction
-map <silent> <F9> <Esc>:call ToggleTree()<CR>
 
-"" toggle line numbers
-map <silent> <Leader>n :setlocal number!<CR>
+" Mapping
+map <Leader> <Esc>:call ToggleTree()<CR>
+map <silent> <Leader>l :setlocal number!<CR>
+map <silent> <Leader>o :set paste!<CR>
+map <silent> <F8> :bn<CR>
+
+"" Play with buffers
+nnoremap <Leader>p :bp<CR>
+nnoremap <Leader>n :bn<CR>
+nnoremap <Leader>1 :1b<CR>
+nnoremap <Leader>q :bw<CR>
+nnoremap <Leader>w :w<CR>
+set hidden
+
+"" Reactivate backspace
+set backspace=2 "
+
+""Auto remove trailing spaces
+autocmd FileType c,cpp,php,ruby,sh,puppet,python,go,yaml,erb,groovy autocmd BufWritePre <buffer> :%s/\s\+$//e
+
+""Set filetype Groovy for Jenkinsfile
+autocmd BufNewFile,BufRead Jenkinsfile setl ft=groovy
+
+"" Golang
+let g:go_fmt_command = "goimports"
+let g:go_fmt_autosave = 0
