@@ -39,6 +39,7 @@ Plugin 'fatih/vim-go'
 Plugin 'vim-scripts/gnupg.vim'
 Plugin 'markcornick/vim-terraform'
 Plugin 'smerrill/vcl-vim-plugin'
+Plugin 'vim-scripts/vim-gradle'
 " Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
@@ -58,11 +59,11 @@ filetype plugin indent on    " required
 
 syntax on
 " Syntastic
-let g:syntastic_puppet_lint_arguments='--no-class_inherits_from_params_class-check --no-80chars-check'
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-""let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+""let g:syntastic_puppet_lint_arguments='--no-class_inherits_from_params_class-check --no-80chars-check'
+""let g:syntastic_always_populate_loc_list = 1
+""let g:syntastic_auto_loc_list = 1
+""""let g:syntastic_check_on_open = 1
+""let g:syntastic_check_on_wq = 0
 
 "" Ultisnip
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -140,3 +141,6 @@ autocmd BufNewFile,BufRead Jenkinsfile setl ft=groovy
 "" Golang
 let g:go_fmt_command = "goimports"
 let g:go_fmt_autosave = 0
+
+"" Groovy : use Gradle snippets with vim-graddle
+autocmd BufNewFile,BufRead *.groovy set ft=gradle
